@@ -18,7 +18,14 @@ const TimerContainer = styled.div`
 const Timer = () => {
   const [time, setTime] = useState(1500);
   const timer = new Date(time * 1000).toISOString().substr(14, 5);
+
   const [isActive, setIsActive] = useState(false);
+  const [isTask, setIsTask] = useState(false);
+
+  const enableTimer = () => {
+    setTime(time);
+    setIsTask(true);
+  };
 
   const startTimer = () => {
     setIsActive(true);
@@ -43,13 +50,13 @@ const Timer = () => {
   return (
     <TimerContainer>
       <TimerText>{timer}</TimerText>
-      <button onClick={() => startTimer()} disabled={isActive}>
+      <button onClick={() => startTimer()} disabled={!isTask || isActive}>
         Start
       </button>
       <button onClick={() => pauseTimer()} disabled={!isActive}>
         Pause
       </button>
-      <Tasks/>
+      <Tasks addTask={enableTimer} />
     </TimerContainer>
   );
 };

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
-const Tasks = () => {
+const Tasks = ({ addTask }) => {
   const [value, setValue] = useState("");
   const [currentTask, setCurrentTask] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!value) return;
+    addTask();
     setCurrentTask(value);
     setValue("");
   };

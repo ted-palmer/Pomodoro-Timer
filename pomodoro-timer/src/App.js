@@ -1,7 +1,6 @@
 import "./App.css";
 import styled from "styled-components";
 
-import Tasks from "./components/Tasks/Tasks";
 import Timer from "./components/Timer/Timer";
 
 
@@ -28,7 +27,6 @@ function App() {
     <Background>
       <Container>
         <Timer/>
-        <Tasks/>
       </Container>
     </Background>
   );

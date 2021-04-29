@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Tasks from "../Tasks/Tasks";
 
 import styled from "styled-components";
 
@@ -48,6 +49,7 @@ const Timer = () => {
       <button onClick={() => pauseTimer()} disabled={!isActive}>
         Pause
       </button>
+      <Tasks/>
     </TimerContainer>
   );
 };

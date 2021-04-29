@@ -35,6 +35,12 @@ const Timer = () => {
     setIsActive(false);
   };
 
+  const reset = () => {
+    setIsActive(false);
+    setIsTask(false);
+    setTime(1);
+  };
+
   useEffect(() => {
     let intervalId;
     if (isActive) {
@@ -56,7 +62,7 @@ const Timer = () => {
       <button onClick={() => pauseTimer()} disabled={!isActive}>
         Pause
       </button>
-      <Tasks addTask={enableTimer} />
+      <Tasks addTask={enableTimer} reset={reset}/>
     </TimerContainer>
   );
 };

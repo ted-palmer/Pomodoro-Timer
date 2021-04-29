@@ -17,7 +17,15 @@ const TimerContainer = styled.div`
 const Timer = () => {
   const [time, setTime] = useState(1500);
   const timer = new Date(time * 1000).toISOString().substr(14, 5);
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
+
+  const startTimer = () => {
+    setIsActive(true);
+  };
+
+  const pauseTimer = () => {
+    setIsActive(false);
+  };
 
   useEffect(() => {
     let intervalId;
@@ -34,6 +42,12 @@ const Timer = () => {
   return (
     <TimerContainer>
       <TimerText>{timer}</TimerText>
+      <button onClick={() => startTimer()} disabled={isActive}>
+        Start
+      </button>
+      <button onClick={() => pauseTimer()} disabled={!isActive}>
+        Pause
+      </button>
     </TimerContainer>
   );
 };

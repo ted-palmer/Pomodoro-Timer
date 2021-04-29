@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Tasks from "../Tasks/Tasks";
+import BreakModal from "../BreakModal/BreakModal";
 
 import styled from "styled-components";
 
@@ -63,6 +64,7 @@ const Timer = () => {
         Pause
       </button>
       <Tasks addTask={enableTimer} reset={reset}/>
+      <BreakModal/>
     </TimerContainer>
   );
 };

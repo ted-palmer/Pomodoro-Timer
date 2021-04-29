@@ -6,6 +6,7 @@ const Tasks = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!value) return;
     setCurrentTask(value);
     setValue("");
   };
@@ -22,7 +23,7 @@ const Tasks = () => {
           onChange={(e) => setValue(e.target.value)}
         />
         <br />
-        <button>Add Task</button>
+        <button disabled={!value.length > 0}>Add Task</button>
       </form>
     </div>
   );

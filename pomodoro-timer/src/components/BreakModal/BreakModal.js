@@ -1,9 +1,15 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 
-const BreakModal = () => {
+const BreakModal = ({ showModal, startBreak }) => {
+
+    const handleStartBreak = () => {
+        showModal = false;
+        startBreak();
+    }
+
   return (
-    <Modal show={true}>
+    <Modal show={showModal}>
       <Modal.Header>
         <Modal.Title>Times Up!</Modal.Title>
       </Modal.Header>
@@ -16,9 +22,7 @@ const BreakModal = () => {
       </Modal.Body>
 
       <Modal.Footer>
-        <Button variant="primary">
-          Start Break
-        </Button>
+        <Button onClick={handleStartBreak} variant="primary">Start Break</Button>
       </Modal.Footer>
     </Modal>
   );

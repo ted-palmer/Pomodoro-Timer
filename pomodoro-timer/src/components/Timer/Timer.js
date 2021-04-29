@@ -17,11 +17,14 @@ const TimerContainer = styled.div`
 `;
 
 const Timer = () => {
-  const [time, setTime] = useState(1500);
+  const [time, setTime] = useState(1);
   const timer = new Date(time * 1000).toISOString().substr(14, 5);
 
   const [isActive, setIsActive] = useState(false);
   const [isTask, setIsTask] = useState(false);
+  const [isWorkPeriod, setIsWorkPeriod] = useState(true);
+
+  const [showModal, setShowModal] = useState(false);
 
   const enableTimer = () => {
     setTime(time);
@@ -42,9 +45,18 @@ const Timer = () => {
     setTime(1);
   };
 
+  const startBreak = () => {
+    setIsWorkPeriod(false);
+    setTime(1);
+    setShowModal(false);
+  }
+
   useEffect(() => {
     let intervalId;
     if (isActive) {
+        if (time === 0 && isTask && isWorkPeriod) {
+            setShowModal(true);
+          }
       if (time > 0) {
         intervalId = setInterval(() => {
           setTime(time - 1);
@@ -64,7 +76,7 @@ const Timer = () => {
         Pause
       </button>
       <Tasks addTask={enableTimer} reset={reset}/>
-      <BreakModal/>
+      <BreakModal showModal={showModal} startBreak={startBreak}/>
     </TimerContainer>
   );
 };

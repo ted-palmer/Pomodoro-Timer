@@ -2,6 +2,8 @@ import "./App.css";
 import styled from "styled-components";
 
 import Tasks from "./components/Tasks/Tasks";
+import Timer from "./components/Timer/Timer";
+
 
 const Background = styled.div`
   position: fixed;
@@ -25,7 +27,8 @@ function App() {
   return (
     <Background>
       <Container>
-        <Tasks />
+        <Timer/>
+        <Tasks/>
       </Container>
     </Background>
   );

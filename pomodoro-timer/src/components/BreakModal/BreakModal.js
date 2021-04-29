@@ -9,7 +9,7 @@ const BreakModal = ({ showModal, startBreak }) => {
     }
 
   return (
-    <Modal show={showModal}>
+    <Modal show={showModal} animation={null}>
       <Modal.Header>
         <Modal.Title>Times Up!</Modal.Title>
       </Modal.Header>

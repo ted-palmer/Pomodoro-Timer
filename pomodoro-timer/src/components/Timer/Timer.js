@@ -43,6 +43,7 @@ const Timer = () => {
     setIsActive(false);
     setIsTask(false);
     setTime(1);
+    setIsWorkPeriod(true);
   };
 
   const startBreak = () => {

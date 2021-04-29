@@ -1,7 +1,22 @@
 import React, { useState, useEffect } from "react";
 
+import styled from "styled-components";
+
+const TimerText = styled.div`
+  text-align: center;
+  font-size: 72px;
+`;
+
+const TimerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
 const Timer = () => {
   const [time, setTime] = useState(1500);
+  const timer = new Date(time * 1000).toISOString().substr(14, 5);
   const [isActive, setIsActive] = useState(true);
 
   useEffect(() => {
@@ -16,7 +31,11 @@ const Timer = () => {
     return () => clearInterval(intervalId);
   }, [time, isActive]);
 
-  return <div>{time}</div>;
+  return (
+    <TimerContainer>
+      <TimerText>{timer}</TimerText>
+    </TimerContainer>
+  );
 };
 
 export default Timer;

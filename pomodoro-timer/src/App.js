@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import Timer from "./components/Timer/Timer";
 
-
 const Background = styled.div`
   position: fixed;
   top: 0;
@@ -26,6 +25,7 @@ function App() {
   return (
     <Background>
       <Container>
+        <h1>Pomodoro Timer</h1>
         <Timer/>
       </Container>
     </Background>

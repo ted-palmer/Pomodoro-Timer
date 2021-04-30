@@ -69,6 +69,7 @@ const Timer = () => {
 
   return (
     <TimerContainer>
+        {isWorkPeriod ? <h2>Work Period</h2> : <h2>Break Period</h2>}
       <TimerText>{timer}</TimerText>
       <button onClick={() => startTimer()} disabled={!isTask || isActive}>
         Start

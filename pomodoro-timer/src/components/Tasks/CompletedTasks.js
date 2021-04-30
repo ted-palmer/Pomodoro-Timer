@@ -1,4 +1,19 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+
+import ListGroup from 'react-bootstrap/ListGroup';
+
+
+const Container = styled.div`
+  margin-top: 40px;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+
+  h3{
+    text-align: center;
+  }
+`;
 
 const CompletedTasks = ({ completedTasks }) => {
   const [list, setList] = useState([]);
@@ -8,18 +23,14 @@ const CompletedTasks = ({ completedTasks }) => {
   }, [completedTasks]);
 
   return (
-    <div>
-      {list.length > 0 ? (
-        <div>
-          <h3>Completed Tasks:</h3>
+    <Container>
+          <h3>Completed Tasks</h3>
+          <ListGroup>
           {list.map((task) => (
-            <h4 key={task}>{task}</h4>
+            <ListGroup.Item key={task}>{task}</ListGroup.Item>
           ))}
-        </div>
-      ) : (
-        <div></div>
-      )}
-    </div>
+          </ListGroup>
+    </Container>
   );
 };
 

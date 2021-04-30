@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import CompletedTasks from "./CompletedTasks";
+import styled from "styled-components";
 
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, ListGroup } from 'react-bootstrap';
+
+const Container = styled.div`
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Tasks = ({ addTask, reset, completedCycle }) => {
   const [value, setValue] = useState("");
@@ -11,6 +18,7 @@ const Tasks = ({ addTask, reset, completedCycle }) => {
   useEffect(() => {
     if (completedCycle) {
       setCompletedTasks((completedTasks) => [...completedTasks, currentTask]);
+      setCurrentTask("");
       completedCycle = false;
     }
   }, [completedCycle]);
@@ -31,8 +39,10 @@ const Tasks = ({ addTask, reset, completedCycle }) => {
   };
 
   return (
-    <div>
-      Current Task: {currentTask}
+    <Container>
+        {currentTask != "" ? <div><h5>Current Task</h5>
+      <ListGroup.Item>{currentTask}</ListGroup.Item></div>: <></>}
+      <br/>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicEmail">
           <Form.Control
@@ -49,8 +59,10 @@ const Tasks = ({ addTask, reset, completedCycle }) => {
           Reset
         </Button>
       </Form>
-      <CompletedTasks completedTasks={completedTasks} />
-    </div>
+
+      {completedTasks.length > 0 ? <CompletedTasks completedTasks={completedTasks} />: <></> }
+      
+    </Container>
   );
 };
 

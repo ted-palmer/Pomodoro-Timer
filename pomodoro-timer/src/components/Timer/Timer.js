@@ -7,6 +7,7 @@ import styled from "styled-components";
 const TimerText = styled.div`
   text-align: center;
   font-size: 72px;
+  color: ${(props) => (props.color)};
 `;
 
 const TimerContainer = styled.div`
@@ -85,7 +86,7 @@ const Timer = () => {
   return (
     <TimerContainer>
         {isWorkPeriod ? <h2>Work Period</h2> : <h2>Break Period</h2>}
-      <TimerText>{timer}</TimerText>
+      <TimerText color={isWorkPeriod ? "#ff6347" : "#52A3EE"}>{timer}</TimerText>
       <button onClick={() => startTimer()} disabled={!isTask || isActive}>
         Start
       </button>

@@ -11,3 +11,6 @@ Built a Pomodoro Timer in React that tracks a 30 minute Pomodoro session (25 min
 npm install
 npm start
 ```
+
+Runs the app in development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

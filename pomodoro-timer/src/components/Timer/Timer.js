@@ -15,7 +15,6 @@ const TimerContainer = styled.div`
   align-items: center;
   flex-direction: column;
 `;
-
 const Timer = () => {
   const [time, setTime] = useState(1);
   const timer = new Date(time * 1000).toISOString().substr(14, 5);
@@ -23,6 +22,7 @@ const Timer = () => {
   const [isActive, setIsActive] = useState(false);
   const [isTask, setIsTask] = useState(false);
   const [isWorkPeriod, setIsWorkPeriod] = useState(true);
+  const [completedCycle, setCompletedCycle] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -52,12 +52,27 @@ const Timer = () => {
     setShowModal(false);
   }
 
+  const completeCycle = () => {
+    setTimeout(function() {
+      alert('Break time is up');
+    }, 10);
+    reset();
+      setCompletedCycle(true);
+  }
+
+  useEffect(() => {
+    setCompletedCycle(false);
+  }, [completedCycle])
+
   useEffect(() => {
     let intervalId;
     if (isActive) {
-        if (time === 0 && isTask && isWorkPeriod) {
-            setShowModal(true);
-          }
+      if (time === 0 && isTask && isWorkPeriod) {
+        setShowModal(true);
+      }
+      if (time === 0 && isTask && !isWorkPeriod) {
+        completeCycle();
+      }
       if (time > 0) {
         intervalId = setInterval(() => {
           setTime(time - 1);
@@ -77,7 +92,7 @@ const Timer = () => {
       <button onClick={() => pauseTimer()} disabled={!isActive}>
         Pause
       </button>
-      <Tasks addTask={enableTimer} reset={reset}/>
+      <Tasks addTask={enableTimer} reset={reset} completedCycle={completeCycle}/>
       <BreakModal showModal={showModal} startBreak={startBreak}/>
     </TimerContainer>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Tasks = ({ addTask, reset }) => {
+const Tasks = ({ addTask, reset, completedCycle }) => {
   const [value, setValue] = useState("");
   const [currentTask, setCurrentTask] = useState("");
 

@@ -92,7 +92,7 @@ const Timer = () => {
       <button onClick={() => pauseTimer()} disabled={!isActive}>
         Pause
       </button>
-      <Tasks addTask={enableTimer} reset={reset} completedCycle={completeCycle}/>
+      <Tasks addTask={enableTimer} reset={reset} completedCycle={completedCycle}/>
       <BreakModal showModal={showModal} startBreak={startBreak}/>
     </TimerContainer>
   );

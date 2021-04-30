@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import CompletedTasks from "./CompletedTasks";
 
 const Tasks = ({ addTask, reset, completedCycle }) => {
   const [value, setValue] = useState("");
   const [currentTask, setCurrentTask] = useState("");
+  const [completedTasks, setCompletedTasks] = useState([]);
+
+  useEffect(() => {
+    if (completedCycle) {
+      setCompletedTasks((completedTasks) => [...completedTasks, currentTask]);
+      completedCycle = false;
+    }
+  }, [completedCycle]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!value) return;
-    addTask();
     setCurrentTask(value);
+    addTask();
     setValue("");
   };
 
@@ -34,6 +43,7 @@ const Tasks = ({ addTask, reset, completedCycle }) => {
         <button disabled={!value.length > 0}>Add Task</button>
         <button onClick={() => handleReset()}>Reset</button>
       </form>
+      <CompletedTasks completedTasks={completedTasks} />
     </div>
   );
 };

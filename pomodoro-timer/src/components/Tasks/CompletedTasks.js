@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 
+const CompletedTasks = ({ completedTasks }) => {
+  const [list, setList] = useState([]);
 
-const CompletedTasks = () => {
+  useEffect(() => {
+    setList(completedTasks);
+    console.log("CompletedTasks -> useEffect -> " + completedTasks);
+  }, [completedTasks]);
 
-
-}
-
-return (
+  return (
     <div>
-        
+      {list.length > 0 ? (
+        <div>
+          <h3>Completed Tasks:</h3>
+          {list.map((task) => (
+            <h4 key={task}>{task}</h4>
+          ))}
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
-)
+  );
+};
 
 export default CompletedTasks;

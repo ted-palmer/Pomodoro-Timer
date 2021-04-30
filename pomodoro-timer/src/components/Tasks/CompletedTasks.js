@@ -5,7 +5,6 @@ const CompletedTasks = ({ completedTasks }) => {
 
   useEffect(() => {
     setList(completedTasks);
-    console.log("CompletedTasks -> useEffect -> " + completedTasks);
   }, [completedTasks]);
 
   return (

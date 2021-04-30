@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import CompletedTasks from "./CompletedTasks";
 
+import { Form, Button } from 'react-bootstrap';
+
 const Tasks = ({ addTask, reset, completedCycle }) => {
   const [value, setValue] = useState("");
   const [currentTask, setCurrentTask] = useState("");
@@ -31,18 +33,22 @@ const Tasks = ({ addTask, reset, completedCycle }) => {
   return (
     <div>
       Current Task: {currentTask}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          className="input"
-          value={value}
-          placeholder="Enter in a task"
-          onChange={(e) => setValue(e.target.value)}
-        />
-        <br />
-        <button disabled={!value.length > 0}>Add Task</button>
-        <button onClick={() => handleReset()}>Reset</button>
-      </form>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Control
+            type="task"
+            placeholder="Enter in a task"
+            onChange={(e) => setValue(e.target.value)}
+            value={value}
+          />
+        </Form.Group>
+        <Button disabled={!value.length > 0} type="submit">
+          Add Task
+        </Button>{" "}
+        <Button onClick={() => handleReset()} variant="secondary">
+          Reset
+        </Button>
+      </Form>
       <CompletedTasks completedTasks={completedTasks} />
     </div>
   );

@@ -6,12 +6,12 @@ import Timer from "./components/Timer/Timer";
 const Background = styled.div`
   position: fixed;
   top: 0;
-  background-color: #2ea9df;
-  background-image: url(./assets/texture.png);
+  background-color: #EEEEEE;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: -1;
+  padding: 20px;
 `;
 
 const Container = styled.div`

@@ -4,6 +4,8 @@ import BreakModal from "../BreakModal/BreakModal";
 
 import styled from "styled-components";
 
+import Button from 'react-bootstrap/Button';
+
 const TimerText = styled.div`
   text-align: center;
   font-size: 72px;
@@ -11,10 +13,9 @@ const TimerText = styled.div`
 `;
 
 const TimerContainer = styled.div`
-  display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  text-align: center;
 `;
 const Timer = () => {
   const [time, setTime] = useState(1);
@@ -87,12 +88,12 @@ const Timer = () => {
     <TimerContainer>
         {isWorkPeriod ? <h2>Work Period</h2> : <h2>Break Period</h2>}
       <TimerText color={isWorkPeriod ? "#ff6347" : "#52A3EE"}>{timer}</TimerText>
-      <button onClick={() => startTimer()} disabled={!isTask || isActive}>
+      <Button onClick={() => startTimer()} disabled={!isTask || isActive} variant="primary">
         Start
-      </button>
-      <button onClick={() => pauseTimer()} disabled={!isActive}>
+      </Button>{' '}
+      <Button onClick={() => pauseTimer()} disabled={!isActive} variant="secondary">
         Pause
-      </button>
+      </Button>
       <Tasks addTask={enableTimer} reset={reset} completedCycle={completedCycle}/>
       <BreakModal showModal={showModal} startBreak={startBreak}/>
     </TimerContainer>

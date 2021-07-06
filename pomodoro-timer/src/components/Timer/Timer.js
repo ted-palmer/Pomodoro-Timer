@@ -18,7 +18,7 @@ const TimerContainer = styled.div`
   text-align: center;
 `;
 const Timer = () => {
-  const [time, setTime] = useState(1500);
+  const [time, setTime] = useState(5);
   const timer = new Date(time * 1000).toISOString().substr(14, 5);
 
   const [isActive, setIsActive] = useState(false);
@@ -44,13 +44,13 @@ const Timer = () => {
   const reset = () => {
     setIsActive(false);
     setIsTask(false);
-    setTime(1500);
+    setTime(5);
     setIsWorkPeriod(true);
   };
 
   const startBreak = () => {
     setIsWorkPeriod(false);
-    setTime(300);
+    setTime(5);
     setShowModal(false);
   }
 

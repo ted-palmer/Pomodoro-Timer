@@ -20,7 +20,6 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
 `;
-
 function App() {
   return (
     <Background>
